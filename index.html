@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelas XPPLG 1 - SMK Telkom Purwokerto</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { poppins: ['Poppins', 'sans-serif'] },
+                },
+            },
+        };
+    </script>
+
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+
+        /* Gallery Scroll */
+        .gallery-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+        }
+        .gallery-container::-webkit-scrollbar { display: none; }
+        .gallery-item {
+            flex: 0 0 auto;
+            width: 300px;
+            scroll-snap-align: start;
+            margin-right: 1rem;
+        }
+        @media (max-width: 640px) {
+            .gallery-item { width: 250px; }
+        }
+
+        /* Card Hover */
+        .member-card {
+            transition: transform 0.3s ease;
+        }
+        .member-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300 min-h-screen">
+    <!-- Navbar -->
+    <nav class="bg-white dark:bg-gray-800 shadow-lg fixed w-full top-0 z-50 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <a href="#home" class="text-xl font-bold text-gray-900 dark:text-white">XPPLG 1</a>
+                    <div class="hidden md:flex space-x-6">
+                        <a href="#home" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Home</a>
+                        <a href="#gallery" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Galeri Kelas</a>
+                        <a href="#members" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Anggota</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <!-- Language Toggle -->
+                    <button id="langToggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">
+                        🇮🇩
+                    </button>
+                    <!-- Dark/Light Toggle -->
+                    <button id="themeToggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">
+                        🌙
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="md:hidden bg-white dark:bg-gray-800 shadow-lg fixed w-full top-16 z-40 hidden">
+        <div class="px-4 py-2 space-y-2">
+            <a href="#home" class="block hover:text-blue-600 dark:hover:text-blue-400">Home</a>
+            <a href="#gallery" class="block hover:text-blue-600 dark:hover:text-blue-400">Galeri Kelas</a>
+            <a href="#members" class="block hover:text-blue-600 dark:hover:text-blue-400">Anggota</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="pt-20">
+        <!-- Home Section -->
+        <section id="home" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
+            <h1 id="home-title" class="text-4xl md:text-5xl font-bold mb-6">Selamat Datang di Website Kelas XPPLG 1</h1>
+            <p id="home-desc" class="text-lg md:text-xl max-w-2xl mx-auto mb-8">Kami adalah siswa dari SMK Telkom Purwokerto jurusan PPLG. Website ini dibuat untuk memperkenalkan kelas kami dan menyimpan kenangan bersama.</p>
+            <div class="space-x-4">
+                <a href="#gallery" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">Lihat Galeri</a>
+                <a href="#members" class="bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition">Lihat Anggota</a>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <h2 id="gallery-title" class="text-3xl font-bold mb-4 text-center">Kenangan Bersama Teman-teman XPPLG 1</h2>
+            <p id="gallery-desc" class="text-lg text-center mb-8 max-w-2xl mx-auto">Beberapa momen terbaik kami selama perjalanan di SMK Telkom Purwokerto.</p>
+            <div class="gallery-container gap-4">
+                <div class="gallery-item"><img src="https://via.placeholder.com/300x200?text=Momen+1" alt="Momen 1" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
+                <div class="gallery-item"><img src="https://via.placeholder.com/300x200?text=Momen+2" alt="Momen 2" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
+                <div class="gallery-item"><img src="https://via.placeholder.com/300x200?text=Momen+3" alt="Momen 3" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
+                <div class="gallery-item"><img src="https://via.placeholder.com/300x200?text=Momen+4" alt="Momen 4" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
+                <div class="gallery-item"><img src="https://via.placeholder.com/300x200?text=Momen+5" alt="Momen 5" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
+            </div>
+        </section>
+
+        <!-- Members Section -->
+        <section id="members" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <h2 id="members-title" class="text-3xl font-bold mb-8 text-center">Anggota Kelas XPPLG 1</h2>
+            <div id="members-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 dark:bg-gray-900 text-white py-6 text-center">
+        <p id="footer-text">© 2025 XPPLG 1 | Website dibuat oleh Kiandra ❤️</p>
+    </footer>
+
+    <!-- External JS -->
+    <script src="script.js"></script>
+</body>
+</html>
