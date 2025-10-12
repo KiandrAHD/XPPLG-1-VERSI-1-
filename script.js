@@ -1,4 +1,4 @@
-// 🌐 Language Data
+// Language Data
 const translations = {
     id: {
         'home-title': 'Selamat Datang di Website Kelas XPPLG 1',
@@ -6,8 +6,8 @@ const translations = {
         'gallery-title': 'Kenangan Bersama Teman-teman XPPLG 1',
         'gallery-desc': 'Beberapa momen terbaik kami selama perjalanan di SMK Telkom Purwokerto.',
         'members-title': 'Anggota Kelas XPPLG 1',
-        'footer-text': '© 2025 XPPLG 1 | Website dibuat oleh Kiandra ❤️',
-        'lang-btn': '🇮🇩'
+        'footer-text': '© 2025 XPPLG 1 | Website dibuat oleh Kiandra',
+        'lang-btn': 'ID'
     },
     en: {
         'home-title': 'Welcome to XPPLG 1 Class Website',
@@ -15,12 +15,12 @@ const translations = {
         'gallery-title': 'Memories Together with XPPLG 1 Friends',
         'gallery-desc': 'Some of our best moments during the journey at SMK Telkom Purwokerto.',
         'members-title': 'XPPLG 1 Class Members',
-        'footer-text': '© 2025 XPPLG 1 | Website made by Kiandra ❤️',
-        'lang-btn': '🇬🇧'
+        'footer-text': '© 2025 XPPLG 1 | Website made by Kiandra',
+        'lang-btn': 'EN'
     }
 };
 
-// 👥 Members Data
+// Members Data
 const members = [
     'Achmad Fanani', 'Afrin Shabria Eshal', 'Akmal Ari Fauzan', 'Ali Hasan', 'Ananda Yosi Marsania',
     'Arsyad Arfa Sakhi', 'Axelle Iniko Igun', 'Cresendo Assyabani Darmawan', 'Earlene Nuri Aulia', 'Ezar Nirbana',
@@ -34,7 +34,7 @@ const members = [
 let currentLang = 'id';
 let isDark = false;
 
-// 🈯 Update Language
+// Update Language
 function updateLanguage(lang) {
     currentLang = lang;
     document.documentElement.lang = lang;
@@ -45,7 +45,7 @@ function updateLanguage(lang) {
     generateMembers();
 }
 
-// 🧑‍🤝‍🧑 Generate Members Grid
+// Generate Members Grid
 function generateMembers() {
     const grid = document.getElementById('members-grid');
     grid.innerHTML = '';
@@ -61,20 +61,20 @@ function generateMembers() {
     });
 }
 
-// 🌗 Theme Toggle
+// Theme Toggle
 document.getElementById('themeToggle').addEventListener('click', () => {
     isDark = !isDark;
     document.documentElement.classList.toggle('dark', isDark);
-    document.getElementById('themeToggle').textContent = isDark ? '☀️' : '🌙';
+    document.getElementById('themeToggle').textContent = isDark ? '☀️' : '🌑';
 });
 
-// 🏳️ Language Toggle
+// Language Toggle
 document.getElementById('langToggle').addEventListener('click', () => {
     const newLang = currentLang === 'id' ? 'en' : 'id';
     updateLanguage(newLang);
 });
 
-// 🌀 Smooth Scroll
+// Smooth Scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -82,13 +82,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// 🧭 Navbar Shadow Effect
+// Navbar Shadow Effect
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('nav');
     if (window.scrollY > 100) navbar.classList.add('shadow-lg');
     else navbar.classList.remove('shadow-lg');
 });
 
-// 🚀 Initialize
+// Initialize
 generateMembers();
 updateLanguage('id');
