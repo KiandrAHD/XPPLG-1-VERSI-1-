@@ -35,7 +35,7 @@ Dapat diganti menggunakan tombol toggle di pojok kanan atas.
 Preferensi pengguna disimpan agar tetap sama saat reload.
 
 ### 🌍 Bahasa Indonesia & Inggris
-Website mendukung **dua bahasa** — teks otomatis berubah sesuai toggle bahasa 🇮🇩 / 🇬🇧.
+Website mendukung **dua bahasa** — teks otomatis berubah sesuai toggle bahasa ID / EN.
 
 ### 📱 Desain Responsif
 Dapat diakses dengan nyaman di semua perangkat:
