@@ -4,6 +4,8 @@ Selamat datang di repository resmi **Website Kelas XPPLG 1**! 🎓
 Website ini dibuat oleh siswa Kelas XPPLG 1 dari **SMK Telkom Purwokerto**, jurusan **PPLG (Pengembangan Perangkat Lunak dan Gim)**.  
 Proyek ini bertujuan untuk memperkenalkan kelas kami serta menjadi tempat berbagi kenangan bersama selama masa sekolah.
 
+> 💡 Website ini menggunakan **HTML, Tailwind CSS CDN, dan JavaScript**.
+
 ---
 
 ## 🚀 Fitur Utama
@@ -26,7 +28,7 @@ Setiap card menampilkan:
 Jadwal pelajaran lengkap dari hari **Senin hingga Jumat**, ditampilkan dalam card yang rapi dan mudah dibaca.
 
 ### 🌐 Sosial Media
-Menampilkan tautan ke akun media sosial resmi Kelas XPPLG 1 (Instagram, TikTok, YouTube, WhatsApp Group, dll).
+Menampilkan tautan ke akun media sosial resmi Kelas XPPLG 1 (Instagram).
 
 ### 🌓 Mode Gelap & Terang
 Dapat diganti menggunakan tombol toggle di pojok kanan atas.  
@@ -39,6 +41,6 @@ Website mendukung **dua bahasa** — teks otomatis berubah sesuai toggle bahasa 
 Dapat diakses dengan nyaman di semua perangkat:
 - Desktop
 - Tablet
-- Handphone
+- Handphone  
 
 ---
