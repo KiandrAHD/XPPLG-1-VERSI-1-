@@ -4,19 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kelas XPPLG 1 - SMK Telkom Purwokerto</title>
-    
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+    
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
-                    fontFamily: { poppins: ['Poppins', 'sans-serif'] },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
                 },
             },
         };
@@ -24,34 +22,34 @@
 
     <style>
         body { font-family: 'Poppins', sans-serif; }
-
-        /* Gallery Scroll */
         .gallery-container {
             display: flex;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
             scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+            padding: 1rem 0;
         }
         .gallery-container::-webkit-scrollbar { display: none; }
-        .gallery-item {
-            flex: 0 0 auto;
-            width: 300px;
-            scroll-snap-align: start;
-            margin-right: 1rem;
-        }
+        .gallery-item { flex: 0 0 auto; width: 300px; scroll-snap-align: center; margin-right: 1rem; }
+        .gallery-item:last-child { margin-right: 0; }
         @media (max-width: 640px) {
-            .gallery-item { width: 250px; }
+            .gallery-item { width: 250px; margin-right: 0.75rem; }
         }
-
-        /* Card Hover */
-        .member-card {
-            transition: transform 0.3s ease;
+        .member-card { transition: transform 0.3s ease; }
+        .member-card:hover { transform: scale(1.05); }
+        .schedule-table { overflow-x: auto; white-space: nowrap; }
+        .schedule-table table { min-width: 100%; border-collapse: collapse; }
+        .schedule-table th, .schedule-table td {
+            padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb;
         }
-        .member-card:hover {
-            transform: scale(1.05);
-        }
+        .dark .schedule-table th, .dark .schedule-table td { border-bottom-color: #374151; }
+        #mobileMenu { transition: all 0.3s ease-in-out; max-height: 0; overflow: hidden; }
+        #mobileMenu.open { max-height: 300px; }
     </style>
 </head>
+
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300 min-h-screen">
     <!-- Navbar -->
     <nav class="bg-white dark:bg-gray-800 shadow-lg fixed w-full top-0 z-50 transition-colors duration-300">
@@ -63,35 +61,32 @@
                         <a href="#home" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Home</a>
                         <a href="#gallery" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Galeri Kelas</a>
                         <a href="#members" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Anggota</a>
+                        <a href="#jadwal" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Jadwal Kelas</a>
+                        <a href="#sosmed" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Sosial Media</a>
                     </div>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <!-- Language Toggle -->
-                    <button id="langToggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">
-                        ID
-                    </button>
-                    <!-- Dark/Light Toggle -->
-                    <button id="themeToggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">
-                        🌑
-                    </button>
+                    <button id="langToggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">ID</button>
+                    <button id="themeToggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">🌙</button>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Mobile Menu -->
-    <div id="mobileMenu" class="md:hidden bg-white dark:bg-gray-800 shadow-lg fixed w-full top-16 z-40 hidden">
+    <div id="mobileMenu" class="md:hidden bg-white dark:bg-gray-800 shadow-lg fixed w-full top-16 z-40">
         <div class="px-4 py-2 space-y-2">
-            <a href="#home" class="block hover:text-blue-600 dark:hover:text-blue-400">Home</a>
-            <a href="#gallery" class="block hover:text-blue-600 dark:hover:text-blue-400">Galeri Kelas</a>
-            <a href="#members" class="block hover:text-blue-600 dark:hover:text-blue-400">Anggota</a>
+            <a href="#home" class="block py-2 hover:text-blue-600 dark:hover:text-blue-400 transition">Home</a>
+            <a href="#gallery" class="block py-2 hover:text-blue-600 dark:hover:text-blue-400 transition">Galeri Kelas</a>
+            <a href="#members" class="block py-2 hover:text-blue-600 dark:hover:text-blue-400 transition">Anggota</a>
+            <a href="#jadwal" class="block py-2 hover:text-blue-600 dark:hover:text-blue-400 transition">Jadwal Kelas</a>
+            <a href="#sosmed" class="block py-2 hover:text-blue-600 dark:hover:text-blue-400 transition">Sosial Media</a>
         </div>
     </div>
 
     <!-- Main Content -->
     <main class="pt-20">
-        <!-- Home Section -->
-        <section id="home" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
+        <section id="home" class="py-20 text-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <h1 id="home-title" class="text-4xl md:text-5xl font-bold mb-6">Selamat Datang di Website Kelas XPPLG 1</h1>
             <p id="home-desc" class="text-lg md:text-xl max-w-2xl mx-auto mb-8">Kami adalah siswa dari SMK Telkom Purwokerto jurusan PPLG. Website ini dibuat untuk memperkenalkan kelas kami dan menyimpan kenangan bersama.</p>
             <div class="space-x-4">
@@ -100,24 +95,56 @@
             </div>
         </section>
 
-        <!-- Gallery Section -->
+        <!-- Galeri -->
         <section id="gallery" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <h2 id="gallery-title" class="text-3xl font-bold mb-4 text-center">Kenangan Bersama Teman-teman XPPLG 1</h2>
             <p id="gallery-desc" class="text-lg text-center mb-8 max-w-2xl mx-auto">Beberapa momen terbaik kami selama perjalanan di SMK Telkom Purwokerto.</p>
             <div class="gallery-container gap-4">
-                <div class="gallery-item"><img src="img/gambar1.jpg" alt="Momen 1" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
-                <div class="gallery-item"><img src="img/gambar2.jpg" alt="Momen 2" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
-                <div class="gallery-item"><img src="img/gambar3.jpg" alt="Momen 3" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
-                <div class="gallery-item"><img src="img/gambar4.jpg" alt="Momen 4" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
-                <div class="gallery-item"><img src="img/gambar5.jpg" alt="Momen 5" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
-                <div class="gallery-item"><img src="img/gambar6.jpg" alt="Momen 6" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
-            </div>
+                    <div class="gallery-item"><img src="img/gambar1.jpg" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
+                    <div class="gallery-item"><img src="img/gambar2.jpg" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
+                    <div class="gallery-item"><img src="img/gambar3.jpg" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
+                    <div class="gallery-item"><img src="img/gambar4.jpg" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
+                    <div class="gallery-item"><img src="img/gambar5.jpg" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
+                    <div class="gallery-item"><img src="img/gambar6.jpg" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
+                </div>
         </section>
 
-        <!-- Members Section -->
+        <!-- Anggota -->
         <section id="members" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <h2 id="members-title" class="text-3xl font-bold mb-8 text-center">Anggota Kelas XPPLG 1</h2>
             <div id="members-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+        </section>
+
+        <!-- Jadwal -->
+        <section id="jadwal" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <h2 id="jadwal-title" class="text-3xl font-bold mb-8 text-center">Jadwal Kelas</h2>
+            <div class="schedule-table bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+                <table>
+                    <thead class="bg-gray-200 dark:bg-gray-700">
+                        <tr><th>Hari</th><th>Pelajaran</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>SENIN</td><td>INGGRIS<br>DPK A<br>SENI BUDAYA</td></tr>
+                        <tr><td>SELASA</td><td>MTK<br>PJOK<br>PPC<br>PAI</td></tr>
+                        <tr><td>RABU</td><td>INA<br>PAS</td></tr>
+                        <tr><td>KAMIS</td><td>INF<br>JAWA<br>SEJARAH<br>BK</td></tr>
+                        <tr><td>JUMAT</td><td>MTK<br>DPK C<br>DPK B</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Sosmed -->
+        <section id="sosmed" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <h2 id="sosmed-title" class="text-3xl font-bold mb-8 text-center">Sosial Media</h2>
+            <p id="sosmed-desc" class="text-lg text-center mb-8 max-w-2xl mx-auto">Ikuti kami di media sosial untuk update terbaru dari kelas XPPLG 1.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-md mx-auto">
+                <a href="https://www.instagram.com/xseptue?igsh=czdydTRydjBqNjFh" target="_blank" class="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-6 rounded-lg text-center hover:scale-105 transition">
+                    <div class="text-4xl mb-2">📸</div>
+                    <div class="font-semibold">Instagram Kelas</div>
+                    <div class="text-sm">@xseptue</div>
+                </a>
+            </div>
         </section>
     </main>
 
