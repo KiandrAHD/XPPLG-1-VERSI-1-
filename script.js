@@ -1,4 +1,4 @@
-// Language Data
+// Bahasa (ID & EN)
 const translations = {
     id: {
         'home-title': 'Selamat Datang di Website Kelas XPPLG 1',
@@ -6,7 +6,10 @@ const translations = {
         'gallery-title': 'Kenangan Bersama Teman-teman XPPLG 1',
         'gallery-desc': 'Beberapa momen terbaik kami selama perjalanan di SMK Telkom Purwokerto.',
         'members-title': 'Anggota Kelas XPPLG 1',
-        'footer-text': '© 2025 XPPLG 1 | Website dibuat oleh Kiandra',
+        'jadwal-title': 'Jadwal Kelas',
+        'sosmed-title': 'Sosial Media',
+        'sosmed-desc': 'Ikuti kami di media sosial untuk update terbaru dari kelas XPPLG 1.',
+        'footer-text': '© 2025 XPPLG 1 | Website dibuat oleh Kiandra ',
         'lang-btn': 'ID'
     },
     en: {
@@ -15,12 +18,15 @@ const translations = {
         'gallery-title': 'Memories Together with XPPLG 1 Friends',
         'gallery-desc': 'Some of our best moments during the journey at SMK Telkom Purwokerto.',
         'members-title': 'XPPLG 1 Class Members',
+        'jadwal-title': 'Class Schedule',
+        'sosmed-title': 'Social Media',
+        'sosmed-desc': 'Follow us on social media for the latest updates from XPPLG 1 class.',
         'footer-text': '© 2025 XPPLG 1 | Website made by Kiandra',
         'lang-btn': 'EN'
     }
 };
 
-// Members Data
+// Data anggota
 const members = [
     'Achmad Fanani', 'Afrin Shabria Eshal', 'Akmal Ari Fauzan', 'Ali Hasan', 'Ananda Yosi Marsania',
     'Arsyad Arfa Sakhi', 'Axelle Iniko Igun', 'Cresendo Assyabani Darmawan', 'Earlene Nuri Aulia', 'Ezar Nirbana',
@@ -34,7 +40,7 @@ const members = [
 let currentLang = 'id';
 let isDark = false;
 
-// Update Language
+// Ganti Bahasa
 function updateLanguage(lang) {
     currentLang = lang;
     document.documentElement.lang = lang;
@@ -45,50 +51,49 @@ function updateLanguage(lang) {
     generateMembers();
 }
 
-// Generate Members Grid
+// Generate daftar anggota
 function generateMembers() {
     const grid = document.getElementById('members-grid');
     grid.innerHTML = '';
-    members.forEach((name, index) => {
+    members.forEach((name, i) => {
         const card = document.createElement('div');
         card.className = 'member-card bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md flex flex-col items-center text-center';
         card.innerHTML = `
-            <img src="https://via.placeholder.com/80x80/4F46E5/FFFFFF?text=${index+1}" alt="${name}" class="w-20 h-20 rounded-full mb-4 object-cover">
-            <div class="text-lg font-semibold mb-2">${index + 1}</div>
+            <img src="https://via.placeholder.com/80x80/4F46E5/FFFFFF?text=${i + 1}" class="w-20 h-20 rounded-full mb-4 object-cover" alt="${name}">
+            <div class="text-lg font-semibold mb-2">${i + 1}</div>
             <div class="text-sm">${name}</div>
         `;
         grid.appendChild(card);
     });
 }
 
-// Theme Toggle
+// Toggle tema
 document.getElementById('themeToggle').addEventListener('click', () => {
     isDark = !isDark;
     document.documentElement.classList.toggle('dark', isDark);
     document.getElementById('themeToggle').textContent = isDark ? '☀️' : '🌑';
 });
 
-// Language Toggle
+// Toggle bahasa
 document.getElementById('langToggle').addEventListener('click', () => {
-    const newLang = currentLang === 'id' ? 'en' : 'id';
-    updateLanguage(newLang);
+    updateLanguage(currentLang === 'id' ? 'en' : 'id');
 });
 
-// Smooth Scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
     });
 });
 
-// Navbar Shadow Effect
+// Scroll navbar efek
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('nav');
     if (window.scrollY > 100) navbar.classList.add('shadow-lg');
     else navbar.classList.remove('shadow-lg');
 });
 
-// Initialize
+// Inisialisasi awal
 generateMembers();
 updateLanguage('id');
