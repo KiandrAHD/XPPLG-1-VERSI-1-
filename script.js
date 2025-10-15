@@ -48,6 +48,7 @@ function updateLanguage(lang) {
         if (translations[lang][el.id]) el.textContent = translations[lang][el.id];
     });
     document.getElementById('langToggle').textContent = translations[lang]['lang-btn'];
+    document.getElementById('langToggleMobile').textContent = translations[lang]['lang-btn'];
     generateMembers();
 }
 
@@ -67,33 +68,52 @@ function generateMembers() {
     });
 }
 
-// Toggle tema
-document.getElementById('themeToggle').addEventListener('click', () => {
+// Tema Gelap/Terang
+function toggleTheme() {
     isDark = !isDark;
     document.documentElement.classList.toggle('dark', isDark);
     document.getElementById('themeToggle').textContent = isDark ? '☀️' : '🌑';
-});
+    document.getElementById('themeToggleMobile').textContent = isDark ? '☀️' : '🌑';
+}
 
-// Toggle bahasa
-document.getElementById('langToggle').addEventListener('click', () => {
+// Bahasa
+function toggleLanguage() {
     updateLanguage(currentLang === 'id' ? 'en' : 'id');
+}
+
+// Menu Mobile
+const menuToggle = document.getElementById('menuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+
+menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
 });
 
-// Smooth scroll
+// Tombol Desktop & Mobile
+document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+document.getElementById('themeToggleMobile').addEventListener('click', toggleTheme);
+document.getElementById('langToggle').addEventListener('click', toggleLanguage);
+document.getElementById('langToggleMobile').addEventListener('click', toggleLanguage);
+
+// Smooth Scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
         e.preventDefault();
-        document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+            mobileMenu.classList.remove('open'); // tutup menu mobile setelah klik
+        }
     });
 });
 
-// Scroll navbar efek
+// Scroll Navbar Efek
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('nav');
     if (window.scrollY > 100) navbar.classList.add('shadow-lg');
     else navbar.classList.remove('shadow-lg');
 });
 
-// Inisialisasi awal
+// Inisialisasi
 generateMembers();
 updateLanguage('id');
