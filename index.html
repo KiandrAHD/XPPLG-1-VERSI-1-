@@ -12,9 +12,7 @@
             darkMode: 'class',
             theme: {
                 extend: {
-                    fontFamily: {
-                        'poppins': ['Poppins', 'sans-serif'],
-                    },
+                    fontFamily: { 'poppins': ['Poppins', 'sans-serif'] },
                 },
             },
         };
@@ -23,20 +21,13 @@
     <style>
         body { font-family: 'Poppins', sans-serif; }
         .gallery-container {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-            scrollbar-width: none;
-            -webkit-overflow-scrolling: touch;
-            padding: 1rem 0;
+            display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+            scroll-behavior: smooth; scrollbar-width: none; padding: 1rem 0;
         }
         .gallery-container::-webkit-scrollbar { display: none; }
         .gallery-item { flex: 0 0 auto; width: 300px; scroll-snap-align: center; margin-right: 1rem; }
         .gallery-item:last-child { margin-right: 0; }
-        @media (max-width: 640px) {
-            .gallery-item { width: 250px; margin-right: 0.75rem; }
-        }
+        @media (max-width: 640px) { .gallery-item { width: 250px; margin-right: 0.75rem; } }
         .member-card { transition: transform 0.3s ease; }
         .member-card:hover { transform: scale(1.05); }
         .schedule-table { overflow-x: auto; white-space: nowrap; }
@@ -65,9 +56,15 @@
                         <a href="#sosmed" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Sosial Media</a>
                     </div>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <button id="langToggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">ID</button>
-                    <button id="themeToggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">🌙</button>
+
+                <!-- Tombol kanan (bahasa, tema) -->
+                <div class="flex items-center space-x-3">
+                    <button id="langToggle" class="hidden sm:block p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">ID</button>
+                    <button id="themeToggle" class="hidden sm:block p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">🌑</button>
+                    <!-- Tombol Menu Mobile -->
+                    <button id="menuToggle" class="md:hidden p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">
+                        ☰
+                    </button>
                 </div>
             </div>
         </div>
@@ -81,11 +78,16 @@
             <a href="#members" class="block py-2 hover:text-blue-600 dark:hover:text-blue-400 transition">Anggota</a>
             <a href="#jadwal" class="block py-2 hover:text-blue-600 dark:hover:text-blue-400 transition">Jadwal Kelas</a>
             <a href="#sosmed" class="block py-2 hover:text-blue-600 dark:hover:text-blue-400 transition">Sosial Media</a>
+            <div class="flex justify-around border-t border-gray-300 dark:border-gray-700 pt-2">
+                <button id="langToggleMobile" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">ID</button>
+                <button id="themeToggleMobile" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">🌑</button>
+            </div>
         </div>
     </div>
 
     <!-- Main Content -->
     <main class="pt-20">
+        <!-- Home -->
         <section id="home" class="py-20 text-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <h1 id="home-title" class="text-4xl md:text-5xl font-bold mb-6">Selamat Datang di Website Kelas XPPLG 1</h1>
             <p id="home-desc" class="text-lg md:text-xl max-w-2xl mx-auto mb-8">Kami adalah siswa dari SMK Telkom Purwokerto jurusan PPLG. Website ini dibuat untuk memperkenalkan kelas kami dan menyimpan kenangan bersama.</p>
@@ -100,13 +102,13 @@
             <h2 id="gallery-title" class="text-3xl font-bold mb-4 text-center">Kenangan Bersama Teman-teman XPPLG 1</h2>
             <p id="gallery-desc" class="text-lg text-center mb-8 max-w-2xl mx-auto">Beberapa momen terbaik kami selama perjalanan di SMK Telkom Purwokerto.</p>
             <div class="gallery-container gap-4">
-                    <div class="gallery-item"><img src="img/gambar1.jpg" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
-                    <div class="gallery-item"><img src="img/gambar2.jpg" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
-                    <div class="gallery-item"><img src="img/gambar3.jpg" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
-                    <div class="gallery-item"><img src="img/gambar4.jpg" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
-                    <div class="gallery-item"><img src="img/gambar5.jpg" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
-                    <div class="gallery-item"><img src="img/gambar6.jpg" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
-                </div>
+                <div class="gallery-item"><img src="img/gambar1.jpg" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
+                <div class="gallery-item"><img src="img/gambar2.jpg" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
+                <div class="gallery-item"><img src="img/gambar3.jpg" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
+                <div class="gallery-item"><img src="img/gambar4.jpg" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
+                <div class="gallery-item"><img src="img/gambar5.jpg" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
+                <div class="gallery-item"><img src="img/gambar6.jpg" class="w-full h-48 object-cover rounded-lg shadow-lg"></div>
+            </div>
         </section>
 
         <!-- Anggota -->
